@@ -11,8 +11,12 @@ tabela['TURNO'] = tabela['TURNO'].replace({1 : 'MAT', 2 : 'VES', 3 : 'INT', 4 : 
 tabelaSexo = tabela['SEXO'].value_counts();
 tSM = (tabelaSexo["M"] * 100) / 125;
 tSF = (tabelaSexo["F"] * 100) / 125;
+# print(tabelaSexo);
 # print(f"Total sexo masculino: {tSM}%");
 # print(f"Total sexo feminino: {tSF}%");
+#plt.bar(tabela.columms);
+plt.bar(tabela.shape[0], tabela.shape[1]);
+plt.show()
 #Mais pessoas do sexo masculino(86,4%) do que feminino(13,6%)
 
 
@@ -43,3 +47,13 @@ TCAPUB = (tabelaCatAc["Publica"] * 100) / 125;
 # print(f"{TCAPRI}% dos alunos são de escola privada");
 # print(f"{TCAPUB}% dos alunos são de escola publica");
 #Cerca de 72,8% estudaram em escola privada enquanto 27,2% estudaram em escola pública
+
+# TABELA COONTIGENCIA
+
+tabelaCont = pd.crosstab(
+    tabela["SEXO"],
+    tabela["MODALIDADE"],
+    margins= 'True',
+    margins_name= "Total"
+    )
+print(tabelaCont)
